@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.academiadecodigo.myApp.model.User" table="table_users">
+        <id name="email" column="email" type="string"/>
+        <property name="name" column="username" type="string"/>
+        <property name="password" column="password" type="string"/>
+        <set name="roles" table="user_role" cascade="all">
+            <key column="email"/>
+            <many-to-many class="org.academiadecodigo.myApp.model.User" column="role" />
+        </set>
+    </class>
+</hibernate-mapping>

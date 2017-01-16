@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id = "navigation" class="org.academiadecodigo.myApp.view.Navigation" factory-method="getInstance">
+    <property name="controllers">
+        <map>
+            <entry key="LoginController" value-ref="loginController"/>
+            <entry key="RegisterController" value-ref="registerController"/>
+        </map>
+    </property>
+</bean>
+
+    <bean id="loginController" class="org.academiadecodigo.myApp.controller.LoginController">
+        <property name="userService" ref="userService"/>
+        <property name="navigation" ref="navigation"/>
+    </bean>
+    <bean id="registerController" class="org.academiadecodigo.myApp.controller.RegisterController">
+        <property name="userService" ref="userService"/>
+        <property name="navigation" ref="navigation"/>
+    </bean>
+</beans>
